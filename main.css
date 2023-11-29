@@ -1,0 +1,23 @@
+/* 
+font-family: 'Bungee Shade', sans-serif;メインページの大きなHon! Pon! Bon!の候補
+font-family: 'Noto Sans JP', sans-serif;キレイめな英語フォント
+font-family: 'Noto Serif JP', serif;　キレイめな英語フォント
+font-family: 'Roboto', sans-serif; 普通の日本語フォント
+font-family: 'Tourney', sans-serif;　メインページの大きなHon! Pon! Bon!の候補
+font-family: 'Yuji Mai';　習字
+*/
+
+h1{
+    color: #f64444;
+}
+.one{
+    font-family: 'Bungee Shade', sans-serif;
+    font-size: 200px;
+}
+.two{
+    font-family: 'Tourney', sans-serif;
+    font-size: 200px;
+}
+.zero{
+    font-family: 'Yuji Mai';
+}
