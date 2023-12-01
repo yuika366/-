@@ -1,0 +1,54 @@
+.score-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #8a8a8a;
+  }
+  .point_num{
+    padding: 10px;
+  }
+  .questions_num{
+    padding: 10px;
+  }
+  
+  .score-wrapper > * {
+    margin: 0;
+  }
+  
+.question-container{
+    width: 100vw;
+    height: 80%;
+    text-align: center;
+}
+
+.image-container img{
+    width: 20%;
+    height: auto;
+}
+
+.image-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+}
+
+.captions{
+    display: inline-block;
+  }
+
+.captions h1{
+    font-family: 'Yuji Mai';
+    font-size: 100px;
+}
+
+.btn_wrapper .btn{
+    padding: 1% 7%;
+    font-family: 'Noto Sans JP';
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 50px;
+    border-width: 4px;
+    border-radius: 15px;
+}
