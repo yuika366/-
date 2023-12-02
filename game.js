@@ -47,26 +47,15 @@ const mondai = [
     {"id":"3", "img":"./images/three.png", "caption":"3本", "pronounce":"bon" },
     {"id":"4", "img":"./images/four.jpg", "caption":"4本", "pronounce":"hon" },
     {"id":"5", "img":"./images/five.png", "caption":"5本", "pronounce":"hon" },
-    {"id":"6", "img":"./images/six.png", "caption":"6本", "pronounce":["pon","hon"]  },
-    {"id":"7", "img":"./images/seven.jpg", "caption":"7本", "pronounce":"hon"  },
-    {"id":"8", "img":"./images/eight.jpg", "caption":"8本", "pronounce":["pon","hon"]  },
+    {"id":"6", "img":"./images/six.png", "caption":"6本", "pronounce":"pon , hon"},
+    {"id":"7", "img":"./images/seven.jpg", "caption":"7本", "pronounce":"hon"},
+    {"id":"8", "img":"./images/eight.jpg", "caption":"8本", "pronounce":"pon , hon"},
     {"id":"9", "img":"./images/nine.jpg", "caption":"9本", "pronounce":"hon"  },
     {"id":"10", "img":"./images/ten.jpg", "caption":"10本", "pronounce":"pon"  }
 ]
 
 
-    for(let i = 0; i < changeButtons.length; i++){
-        changeButtons[i].addEventListener('click', function() {
-            // ランダムな問題を取得
-            let randomMondai = getRandomMondai();
-            currentElement = randomMondai;
-            // 問題を表示
-            displayMondai(randomMondai);
-            currentQuestionCount++;
-            questioncount[0].textContent = String(currentQuestionCount);
-        });
-    }
-
+    //honが押されたとき
     honBtn.addEventListener('click', function() {
         //正誤判定
         let yesOrNo = honIsCorrect();
@@ -75,13 +64,13 @@ const mondai = [
 
     ponBtn.addEventListener('click', function() {
         //正誤判定
-        let yesOrNo = honIsCorrect();
+        let yesOrNo = ponIsCorrect();
         showyesOrNo(yesOrNo);
     });
 
     bonBtn.addEventListener('click', function() {
         //正誤判定
-        let yesOrNo = honIsCorrect();
+        let yesOrNo = bonIsCorrect();
         showyesOrNo(yesOrNo);
     });
 
@@ -135,9 +124,24 @@ function bonIsCorrect(){
 }
 
 function showyesOrNo(answer){
-    if(answer === "true"){
+    if(answer === true){
+        //2秒後に画像が切り替わる
         questionImageElement.src = "./images/correct.jpg";
+        questionCaptionElement[0].textContent = currentElement["pronounce"];
+        setTimeout(changeImage,2000);
     }else{
-
+        questionImageElement.src = "./images/wrong.jpg";
+        questionCaptionElement[0].textContent = currentElement["pronounce"];
+        setTimeout(changeImage,2000);
     }
 }
+
+function changeImage(){
+     // ランダムな問題を取得
+     let randomMondai = getRandomMondai();
+     currentElement = randomMondai;
+     // 問題を表示
+     displayMondai(randomMondai);
+     currentQuestionCount++;
+     questioncount[0].textContent = String(currentQuestionCount);
+ }
