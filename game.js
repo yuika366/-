@@ -7,7 +7,6 @@ const questionCaptionElement = document.getElementsByClassName("question_caption
 const questioncount =document.getElementsByClassName("questions_num");
 
 let currentQuestionCount = 1;
-let currentElement = 0;
 
 // const allButtons = document.getElementsByClassName('btn');
 
@@ -40,6 +39,61 @@ let currentElement = 0;
 
 //     activeButton.classList.add('show');
 // }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ゲーム画面の初期化時にURLパラメータから問題のインデックスを取得
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialQuestionIndex = parseInt(urlParams.get('initialQuestionIndex'), 10);
+    console.log(initialQuestionIndex);
+    
+    // 最初の問題を表示
+    let usedQuestionIndices = [];
+    
+
+    for(let i = 0; i < changeButtons.length; i++){
+        changeButtons[i].addEventListener('click', function() {
+            //正誤判定
+            isCorrect();
+        });
+        changeButtons[i].addEventListener('click', function() {
+            // ランダムな問題を取得
+            let randomMondai = getRandomMondai();
+            // 問題を表示
+            displayMondai(randomMondai);
+            currentQuestionCount++;
+    questioncount[0].textContent = String(currentQuestionCount);
+        });
+    }
+
+    const initialMondai = mondai[initialQuestionIndex];
+    displayMondai(initialMondai);
+    mondai.splice(initialQuestionIndex,1);
+
+    function getRandomMondai() {
+        let availableIndices = mondai.map((_, index) => index).filter(index => !usedQuestionIndices.includes(index));
+    
+        // 全ての問題が表示された場合はリセット
+        if (availableIndices.length === 0) {
+            usedQuestionIndices = [];
+            availableIndices = mondai.map((_, index) => index);
+        }
+    
+        // 未使用の問題からランダムに選ぶ
+        const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+        usedQuestionIndices.push(randomIndex);
+        return mondai[randomIndex];
+    }
+    
+    function displayMondai(mondai) {
+        // 画像のsrc属性を新しいURLに変更
+        questionImageElement.src = mondai["img"];
+        // キャプションを設定
+        questionCaptionElement[0].textContent = mondai["caption"];
+    
+    }
+});
+
 
 const mondai = [
     {"id":"1", "img":"./images/one.png", "caption":"1本", "pronounce":"pon" },
@@ -78,18 +132,7 @@ const mondai = [
     
 
 
-function getRandomMondai() {
-    let randomIndex = Math.floor(Math.random() * (10-0)) ;
-    return mondai[randomIndex];
-}
 
-function displayMondai(mondai) {
-    // 画像のsrc属性を新しいURLに変更
-    questionImageElement.src = mondai["img"];
-    // キャプションを設定
-    questionCaptionElement[0].textContent = mondai["caption"];
-
-}
 
 function honIsCorrect(){
     if(currentElement["id"] === "2" || currentElement["id"] ===  "4"||currentElement["id"] === "5" ||currentElement["id"] === "6" ||currentElement["id"] === "7" ||
@@ -136,12 +179,3 @@ function showyesOrNo(answer){
     }
 }
 
-function changeImage(){
-     // ランダムな問題を取得
-     let randomMondai = getRandomMondai();
-     currentElement = randomMondai;
-     // 問題を表示
-     displayMondai(randomMondai);
-     currentQuestionCount++;
-     questioncount[0].textContent = String(currentQuestionCount);
- }
