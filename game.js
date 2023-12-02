@@ -5,8 +5,12 @@ const bonBtn = document.getElementById("btn3");
 const questionImageElement = document.getElementById("image");
 const questionCaptionElement = document.getElementsByClassName("question_caption");
 const questioncount =document.getElementsByClassName("questions_num");
+const pointCount =document.getElementsByClassName("point_num");
 
 let currentQuestionCount = 1;
+let currentElement = 0;
+let correctNum = 0;
+pointCount[0].innerHTML = correctNum; 
 
 // const allButtons = document.getElementsByClassName('btn');
 
@@ -168,14 +172,52 @@ function bonIsCorrect(){
 
 function showyesOrNo(answer){
     if(answer === true){
-        //2秒後に画像が切り替わる
-        questionImageElement.src = "./images/correct.jpg";
-        questionCaptionElement[0].textContent = currentElement["pronounce"];
-        setTimeout(changeImage,2000);
+        //正解の時、ポイントが1増える
+        correctNum += 1;
+        pointCount[0].innerHTML = correctNum;
+        if(pointCount[0].innerHTML = 10){
+            showResults();
+        }else{
+            //2秒後に画像が切り替わる
+            questionImageElement.src = "./images/correct.jpg";
+            questionCaptionElement[0].textContent = currentElement["pronounce"];
+            
+            //二秒間ボタンが押せなくなる
+            honBtn.disabled = true;
+            ponBtn.disabled = true;
+            bonBtn.disabled = true;
+            setTimeout(changeImage,2000);
+        }
     }else{
         questionImageElement.src = "./images/wrong.jpg";
         questionCaptionElement[0].textContent = currentElement["pronounce"];
+        
+        //二秒間ボタンが押せなくなる
+        honBtn.disabled = true;
+        ponBtn.disabled = true;
+        bonBtn.disabled = true;
         setTimeout(changeImage,2000);
     }
 }
 
+function changeImage(){
+     // ランダムな問題を取得
+     let randomMondai = getRandomMondai();
+     currentElement = randomMondai;
+     // 問題を表示
+     displayMondai(randomMondai);
+     currentQuestionCount++;
+     questioncount[0].textContent = String(currentQuestionCount);
+
+     //ボタンが押せるようになる
+     honBtn.disabled = false;
+     ponBtn.disabled = false;
+     bonBtn.disabled = false;
+ }
+
+function showResults(){
+    //二秒間ボタンが押せなくなる
+    honBtn.disabled = true;
+    ponBtn.disabled = true;
+    bonBtn.disabled = true;
+}
