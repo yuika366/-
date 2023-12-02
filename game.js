@@ -78,6 +78,3 @@ function displayMondai(mondai) {
     questionCaptionElement[0].textContent = mondai["caption"];
 }
 
-function isCorrect(){
-    if()
-}
