@@ -62,6 +62,9 @@ for(let i = 0; i < changeButtons.length; i++){
     
         // 問題を表示
         displayMondai(randomMondai);
+
+        currentQuestionCount++;
+        questioncount[0].textContent = String(currentQuestionCount);
     });
 }
 
