@@ -1,6 +1,9 @@
 const changeButton = document.getElementById("btn1");
 const questionImageElement = document.getElementById("image");
 const questionCaptionElement = document.getElementsByClassName("question_caption");
+const questioncount =document.getElementsByClassName("questions_num");
+
+let currentQuestionCount = 1;
 
 // const allButtons = document.getElementsByClassName('btn');
 
@@ -53,6 +56,9 @@ changeButton.addEventListener('click', function() {
 
     // 問題を表示
     displayMondai(randomMondai);
+
+    currentQuestionCount++;
+    questioncount[0].textContent = String(currentQuestionCount);
 });
 
 function getRandomMondai() {
@@ -65,4 +71,6 @@ function displayMondai(mondai) {
     questionImageElement.src = mondai["img"];
     // キャプションを設定
     questionCaptionElement[0].textContent = mondai["caption"];
+    questioncount[0].textContent
+
 }
