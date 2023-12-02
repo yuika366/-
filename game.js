@@ -65,6 +65,7 @@ for(let i = 0; i < changeButtons.length; i++){
 
         currentQuestionCount++;
         questioncount[0].textContent = String(currentQuestionCount);
+        
     });
 }
 
