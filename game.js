@@ -7,6 +7,7 @@ const questionCaptionElement = document.getElementsByClassName("question_caption
 const questioncount =document.getElementsByClassName("questions_num");
 
 let currentQuestionCount = 1;
+let currentElement = 0;
 
 // const allButtons = document.getElementsByClassName('btn');
 
@@ -56,18 +57,33 @@ const mondai = [
 
     for(let i = 0; i < changeButtons.length; i++){
         changeButtons[i].addEventListener('click', function() {
-            //正誤判定
-            isCorrect();
-        });
-        changeButtons[i].addEventListener('click', function() {
             // ランダムな問題を取得
             let randomMondai = getRandomMondai();
+            currentElement = randomMondai;
             // 問題を表示
             displayMondai(randomMondai);
             currentQuestionCount++;
-    questioncount[0].textContent = String(currentQuestionCount);
+            questioncount[0].textContent = String(currentQuestionCount);
         });
     }
+
+    honBtn.addEventListener('click', function() {
+        //正誤判定
+        let yesOrNo = honIsCorrect();
+        showyesOrNo(yesOrNo);
+    });
+
+    ponBtn.addEventListener('click', function() {
+        //正誤判定
+        let yesOrNo = honIsCorrect();
+        showyesOrNo(yesOrNo);
+    });
+
+    bonBtn.addEventListener('click', function() {
+        //正誤判定
+        let yesOrNo = honIsCorrect();
+        showyesOrNo(yesOrNo);
+    });
 
     
     
@@ -84,4 +100,44 @@ function displayMondai(mondai) {
     // キャプションを設定
     questionCaptionElement[0].textContent = mondai["caption"];
 
+}
+
+function honIsCorrect(){
+    if(currentElement["id"] === "2" || currentElement["id"] ===  "4"||currentElement["id"] === "5" ||currentElement["id"] === "6" ||currentElement["id"] === "7" ||
+    currentElement["id"] === "8" ||currentElement["id"] === "9"){
+        console.log("正解です");
+        return true
+    }else{
+        console.log(currentElement["id"] );
+        return false;
+    }   
+}
+
+function ponIsCorrect(){
+    if(currentElement["id"] === "1" ||currentElement["id"] === "6" ||
+    currentElement["id"] === "8" ||currentElement["id"] === "10"){
+        console.log("正解です");
+        return true
+    }else{
+        console.log(currentElement["id"] );
+        return false;
+    }   
+}
+
+function bonIsCorrect(){
+    if(currentElement["id"] === "3"){
+        console.log("正解です");
+        return true
+    }else{
+        console.log(currentElement["id"] );
+        return false;
+    }   
+}
+
+function showyesOrNo(answer){
+    if(answer === "true"){
+        questionImageElement.src = "./images/correct.jpg";
+    }else{
+
+    }
 }
