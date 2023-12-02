@@ -4,6 +4,9 @@ const ponBtn = document.getElementById("btn2");
 const bonBtn = document.getElementById("btn3");
 const questionImageElement = document.getElementById("image");
 const questionCaptionElement = document.getElementsByClassName("question_caption");
+const questioncount =document.getElementsByClassName("questions_num");
+
+let currentQuestionCount = 1;
 
 // const allButtons = document.getElementsByClassName('btn');
 
@@ -50,24 +53,24 @@ const mondai = [
     {"id":"10", "img":"./images/ten.jpg", "caption":"10本", "pronounce":"pon"  }
 ]
 
-for(let i = 0; i < changeButtons.length; i++){
-    changeButtons[i].addEventListener('click', function() {
-        //正誤判定
-        isCorrect();
-    });
 
-    changeButtons[i].addEventListener('click', function() {
-        // ランダムな問題を取得
-        let randomMondai = getRandomMondai();
+    for(let i = 0; i < changeButtons.length; i++){
+        changeButtons[i].addEventListener('click', function() {
+            //正誤判定
+            isCorrect();
+        });
+        changeButtons[i].addEventListener('click', function() {
+            // ランダムな問題を取得
+            let randomMondai = getRandomMondai();
+            // 問題を表示
+            displayMondai(randomMondai);
+            currentQuestionCount++;
+    questioncount[0].textContent = String(currentQuestionCount);
+        });
+    }
+
     
-        // 問題を表示
-        displayMondai(randomMondai);
-
-        currentQuestionCount++;
-        questioncount[0].textContent = String(currentQuestionCount);
-        
-    });
-}
+    
 
 
 function getRandomMondai() {
@@ -80,5 +83,6 @@ function displayMondai(mondai) {
     questionImageElement.src = mondai["img"];
     // キャプションを設定
     questionCaptionElement[0].textContent = mondai["caption"];
+
 }
 
