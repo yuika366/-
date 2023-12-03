@@ -145,20 +145,31 @@ const initialMondai = mondai[initialQuestionIndex];
     //honが押されたとき
     honBtn.addEventListener('click', function() {
         //正誤判定
+        if(currentQuestionCount<=10&& result.textContent === "Score"){
         let yesOrNo = honIsCorrect();
-        showyesOrNo(yesOrNo);
+        showyesOrNo(yesOrNo);}
+        else if(result.textContent = "Your result"){
+            return;
+        }
     });
 
     ponBtn.addEventListener('click', function() {
         //正誤判定
+        if(currentQuestionCount<=10&& result.textContent === "Score"){
         let yesOrNo = ponIsCorrect();
-        showyesOrNo(yesOrNo);
+        showyesOrNo(yesOrNo);}
+        else if(result.textContent = "Your result")
+        {return;}
     });
 
     bonBtn.addEventListener('click', function() {
         //正誤判定
+        if(currentQuestionCount<=10&& result.textContent === "Score")
+        {
         let yesOrNo = bonIsCorrect();
-        showyesOrNo(yesOrNo);
+        showyesOrNo(yesOrNo);}
+        else if(result.textContent = "Your result")
+        {return;}
     });
 
     
@@ -244,52 +255,58 @@ function showyesOrNo(answer){
     }
 }
 
-function changeImage(){
-    if(currentQuestionCount<=9){
-     // ランダムな問題を取得
-     let randomMondai = getRandomMondai();
-     currentElement = randomMondai;
-     // 問題を表示
-     displayMondai(randomMondai);
-     currentQuestionCount++;
-     questioncount[0].textContent = String(currentQuestionCount);
-     //ボタンが押せるようになる
-     honBtn.disabled = false;
-     ponBtn.disabled = false;
-     bonBtn.disabled = false;}
-     else if(10<=currentQuestionCount){
-        questionImageElement.src ="./images/Fuji.png";
-        questionCaptionElement[0].textContent = correctNum+"点";
-        message.textContent=correctNum+" "+"points";
-        document.getElementById("text").style.color ="red";
-        document.getElementById("question_caption").style.color="red";
-        result.textContent="Your reslut";
-        document.getElementById("result").style.color ="red";
-        honBtn.textContent="replay";
-        ponBtn.textContent="top";
-        bonBtn.textContent="share";
-        document.getElementById("btn1").addEventListener("click", function() {
-            // ランダムな整数を生成
-            let randomIndex = Math.floor(Math.random() * 10); // 例として10を使用
-        
-            // 遷移先URLにランダムなinitialQuestionIndexを含める
-            location.href = `game.html?initialQuestionIndex=${randomIndex}`;
-        });
-        document.getElementById("btn2").addEventListener("click", function() {        
-            location.href = `main.html`;
-        });
-        document.getElementById("btn3").addEventListener("click", function() {        
-            bonBtn.href="https://twitter.com/share?url={ページのURL}&text=リンクテキスト" ;
-        });
-        
-        
+function changeImage() {
+    if (currentQuestionCount <= 9) {
+        // ランダムな問題を取得
+        let randomMondai = getRandomMondai();
+        currentElement = randomMondai;
+        // 問題を表示
+        displayMondai(randomMondai);
+        currentQuestionCount++;
+        questioncount[0].textContent = String(currentQuestionCount);
+        // ボタンが押せるようになる
         honBtn.disabled = false;
         ponBtn.disabled = false;
         bonBtn.disabled = false;
-     }
- }
+    } else if (10 <= currentQuestionCount) {
+        questionImageElement.src = "./images/Fuji.png";
+        questionCaptionElement[0].textContent = correctNum + "点";
+        message.textContent = correctNum + " " + "points";
+        document.getElementById("text").style.color = "red";
+        document.getElementById("question_caption").style.color = "red";
+        result.textContent = "Your result";
+        document.getElementById("result").style.color = "red";
+        honBtn.textContent = "replay";
+        ponBtn.textContent = "top";
+        bonBtn.textContent = "share";
+        document.getElementById("btn1").addEventListener("click", function () {
+
+            let randomIndex = Math.floor(Math.random() * 10);
+
+            location.href = `game.html?initialQuestionIndex=${randomIndex}`;
+        });
+        document.getElementById("btn2").addEventListener("click", function () {
+            location.href = `main.html`;
+        });
+        document.getElementById("btn3").addEventListener("click", function () {
+            // const shareTitle = title;
+            location.href="http://twitter.com/share?url=kyounogohan.com&text=結果は、、、"
+        });
+        honBtn.disabled = false;
+        ponBtn.disabled = false;
+        bonBtn.disabled = false;
+    }
+}
 
 
+//  function share_twitter(){
+//     const share_twitter = document.getElementById("btn3");
+//     const shareTitle = title;
+//     share_twitter.setAttribute(
+//         "href",
+//         "http://twitter.com/share?url=kyounogohan.com&text=結果は、、、"+shareTitle+"!!!!!&via=&hashtags=Hon!Pon!Bon!"
+//     );
+//     }
 
 // function showResults(){
 //     //二秒間ボタンが押せなくなる
