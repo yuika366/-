@@ -8,98 +8,103 @@ font-family: 'Yuji Mai';　習字
 */
 
 h1{
-    color: #f64444;
+  color: #f64444;
 }
 .loop_wrap{
-    font-family: 'Bungee Shade', sans-serif;
-    font-size: 160px;
-    color: #f64444;
-    margin-top:0px;
+  font-family: 'Bungee Shade', sans-serif;
+  font-size: 160px;
+  color: #f64444;
+  margin-top:0px;
 }
 
 
 .zero{
-    font-family: 'Yuji Mai';
-    font-size: 150px;
-    margin-left: 500px;
+  font-family: 'Yuji Mai';
+  font-size: 150px;
+  margin-left: 500px;
 }
 
 .pic{
-    margin-left: 100px;
+  margin-left: 100px;
 }
 .loop_wrap {
-    display: flex;
-    width: 100vw;
-    height: 140px;
-    overflow: hidden;
-  }
-  
-  .loop_wrap {
-    width: auto;
-    height: 100%;
-  }
-  
+  display: flex;
+  width: 100vw;
+  height: 140px;
+  overflow: hidden;
+}
+
+.loop_wrap {
+  width: auto;
+  height: 100%;
+}
+
 
 @keyframes loop {
-    0% {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(100%);
   }
-  
-  @keyframes loop2 {
-    0% {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-200%);
-    }
+  to {
+    transform: translateX(-100%);
   }
-.loop_wrap {
-    flex: 0 0 auto;
-    white-space: nowrap;
-  }
+}
 
-  .loop_wrap div:nth-child(odd) {
-    animation: loop 50s -25s linear infinite;
+@keyframes loop2 {
+  0% {
+    transform: translateX(0);
   }
-  
-  .loop_wrap div:nth-child(even) {
-    animation: loop2 50s linear infinite;
+  to {
+    transform: translateX(-200%);
   }
+}
+.loop_wrap {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.loop_wrap div:nth-child(odd) {
+  animation: loop 50s -25s linear infinite;
+}
+
+.loop_wrap div:nth-child(even) {
+  animation: loop2 50s linear infinite;
+}
 
 
 
 .container{
-    display: flex;
-    position: relative;
-   
+  display: flex;
+  position: relative;
+ 
 }
 
 .middle-container{
-    position: relative;
-    z-index: 1;
-    margin-top: 20px;
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
 }
 
 .btn{
-    padding: 1% 7%;
-    font-family: 'Noto Sans JP';
-    font-weight: bold;
-    font-size: 30px;
-    margin-left: 490px;
-    margin-bottom: 50px;
-    border-width: 4px;
-    border-radius: 15px;
-    margin-top: 20px;
+  padding: 1% 7%;
+  font-family: 'Noto Sans JP';
+  font-weight: bold;
+  font-size: 30px;
+  margin-left: 490px;
+  margin-bottom: 50px;
+  border-width: 4px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+.btn:hover{
+  background-color: #fff;
+  color: #f64444;
+  border-color: #f64444;
 }
 
 .moji{
-    margin-left: 460px;
-    font-size: 20px;
-    position: absolute;
-    z-index: 2;
-    font-family: 'Roboto', sans-serif;
+  margin-left: 460px;
+  font-size: 20px;
+  position: absolute;
+  z-index: 2;
+  font-family: 'Roboto', sans-serif;
 }

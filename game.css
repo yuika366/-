@@ -1,3 +1,7 @@
+body{
+  max-height: 80%;
+}
+
 .score-wrapper {
     display: flex;
     flex-direction: row;
@@ -48,7 +52,18 @@
     font-family: 'Noto Sans JP';
     font-weight: bold;
     font-size: 30px;
-    margin-top: 50px;
+    margin-top: 1%;
     border-width: 4px;
     border-radius: 15px;
+}
+
+.btn_wrapper .btn{
+  color: #F64444;
+  border-color: #F64444;
+}
+
+.btn_wrapper .btn:hover{
+  color: #fff;
+  background-color: #F64444;
+  border-color: #F64444;
 }
