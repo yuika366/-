@@ -6,6 +6,8 @@ const questionImageElement = document.getElementById("image");
 const questionCaptionElement = document.getElementsByClassName("question_caption");
 const questioncount =document.getElementsByClassName("questions_num");
 const pointCount =document.getElementsByClassName("point_num");
+const message=document.getElementById("text");
+const result=document.getElementById("result");
 
 let currentQuestionCount = 1;
 let currentElement = 0;
@@ -229,7 +231,7 @@ function showyesOrNo(answer){
             ponBtn.disabled = true;
             bonBtn.disabled = true;
             setTimeout(changeImage,2000);
-    }else{
+    }else if(answer===false){
         questionImageElement.src = "./images/wrong.jpg";
         questionCaptionElement[0].textContent = currentElement["pronounce"];
         
@@ -238,6 +240,7 @@ function showyesOrNo(answer){
         ponBtn.disabled = true;
         bonBtn.disabled = true;
         setTimeout(changeImage,2000);
+    
     }
 }
 
@@ -254,10 +257,39 @@ function changeImage(){
      honBtn.disabled = false;
      ponBtn.disabled = false;
      bonBtn.disabled = false;}
-     if(9<currentQuestionCount){
-        return;
+     else if(10<=currentQuestionCount){
+        questionImageElement.src ="./images/Fuji.png";
+        questionCaptionElement[0].textContent = correctNum+"点";
+        message.textContent=correctNum+" "+"points";
+        document.getElementById("text").style.color ="red";
+        document.getElementById("question_caption").style.color="red";
+        result.textContent="Your reslut";
+        document.getElementById("result").style.color ="red";
+        honBtn.textContent="replay";
+        ponBtn.textContent="top";
+        bonBtn.textContent="share";
+        document.getElementById("btn1").addEventListener("click", function() {
+            // ランダムな整数を生成
+            let randomIndex = Math.floor(Math.random() * 10); // 例として10を使用
+        
+            // 遷移先URLにランダムなinitialQuestionIndexを含める
+            location.href = `game.html?initialQuestionIndex=${randomIndex}`;
+        });
+        document.getElementById("btn2").addEventListener("click", function() {        
+            location.href = `main.html`;
+        });
+        document.getElementById("btn3").addEventListener("click", function() {        
+            bonBtn.href="https://twitter.com/share?url={ページのURL}&text=リンクテキスト" ;
+        });
+        
+        
+        honBtn.disabled = false;
+        ponBtn.disabled = false;
+        bonBtn.disabled = false;
      }
  }
+
+
 
 // function showResults(){
 //     //二秒間ボタンが押せなくなる
