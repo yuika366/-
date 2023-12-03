@@ -242,6 +242,7 @@ function showyesOrNo(answer){
 }
 
 function changeImage(){
+    if(currentQuestionCount<=9){
      // ランダムな問題を取得
      let randomMondai = getRandomMondai();
      currentElement = randomMondai;
@@ -249,11 +250,13 @@ function changeImage(){
      displayMondai(randomMondai);
      currentQuestionCount++;
      questioncount[0].textContent = String(currentQuestionCount);
-
      //ボタンが押せるようになる
      honBtn.disabled = false;
      ponBtn.disabled = false;
-     bonBtn.disabled = false;
+     bonBtn.disabled = false;}
+     if(9<currentQuestionCount){
+        return;
+     }
  }
 
 // function showResults(){
