@@ -286,7 +286,7 @@ function changeImage() {
             location.href = `game.html?initialQuestionIndex=${randomIndex}`;
         });
         document.getElementById("btn2").addEventListener("click", function () {
-            location.href = `main.html`;
+            location.href = `index.html`;
         });
         document.getElementById("btn3").addEventListener("click", function () {
             // const shareTitle = title;
