@@ -20,12 +20,7 @@ h1{
 
 .zero{
   font-family: 'Yuji Mai';
-  font-size: 150px;
-  margin-left: 500px;
-}
-
-.pic{
-  margin-left: 100px;
+  font-size: 200px;
 }
 .loop_wrap {
   display: flex;
@@ -73,15 +68,15 @@ h1{
 
 
 .container{
+  text-align: center;
   display: flex;
-  position: relative;
- 
+  justify-content: center;
+  width: 100%;
 }
 
 .middle-container{
-  position: relative;
-  z-index: 1;
-  margin-top: 20px;
+  display: inline-block;
+  width: 100%;
 }
 
 .btn{
@@ -89,8 +84,6 @@ h1{
   font-family: 'Noto Sans JP';
   font-weight: bold;
   font-size: 30px;
-  margin-left: 490px;
-  margin-bottom: 50px;
   border-width: 4px;
   border-radius: 15px;
   margin-top: 20px;
@@ -102,9 +95,47 @@ h1{
 }
 
 .moji{
-  margin-left: 460px;
-  font-size: 20px;
-  position: absolute;
-  z-index: 2;
-  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: bold;
+  color: #8A8A8A;
+}
+.pic{
+  display: inline-block;
+  width: 40%;
+  height: auto;
+}
+
+/* タブレットサイズでスクロールしなくていいようにサイズ変更 */
+@media (max-width:768px) {
+  .zero{
+    font-size: 150px;
+  }
+  .pic{
+    width: 50%;
+    height: auto;
+  }
+}
+/* スマホサイズで横並びの解除 */
+@media (max-width:425px) {
+  .container{
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .pic{
+    width: 60%;
+    height: auto;
+  }
+  .middle-container{
+    display: inline-block;
+    width: 100%;
+  }
+  .zero{
+    font-size: 120px;
+  }
+  .moji{
+    font-size: 12px;
+  }
 }
