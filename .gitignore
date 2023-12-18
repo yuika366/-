@@ -1,0 +1,2 @@
+#node_modulesはgitの追跡対象外
+/node_modules/
